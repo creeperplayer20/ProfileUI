@@ -1,6 +1,6 @@
 name: ProfileUI
-main: Profile/Main
-author:
-- creeperplayer20
-version: 1.0
+description: A profile user interface for PocketMine-MP
+author: CreeperTeam
+version: 1.0.0
 api: 3.0.0
+main: creeperteam\profileui\ProfileUI
