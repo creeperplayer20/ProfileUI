@@ -1,0 +1,6 @@
+name: ProfileUI
+main: Profile/Main
+author:
+- creeperplayer20
+version: 1.0
+api: 3.0.0
