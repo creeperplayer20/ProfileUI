@@ -1,12 +1,26 @@
+<?php
 namespace creeperteam\profileui;
 
-use creeperteam\form\CustomForm;
-use creeperteam\form\SimpleForm;
-use creeperteam\form\ModalForm;
+use creeperteam\profileui\command\ProfileCommand;
+use creeperteam\profileui\form\CustomForm;
+use creeperteam\profileui\form\SimpleForm;
+use creeperteam\profileui\form\ModalForm;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
 
 class ProfileUI extends PluginBase implements Listener {
+
+    public function onEnable() {
+        $folder = $this->getDataFolder();
+        if(!is_dir($folder))
+            @mkdir($folder);
+        $this->saveDefaultConfig();
+        $this->config = (new Config($folder.'config.yml', Config::YAML))->getAll();
+        $this->users = (new Config($folder.'users.yml', Config::YAML))->getAll();
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->getServer()->getCommandMap()->register("ProfileCommand", new ProfileCommand($this));
+    }
 
    /**
      * @deprecated
