@@ -18,7 +18,7 @@ class ProfileCommand extends PluginCommand {
 
     public function __construct(Main $owner){
         parent::__construct($this->cmd, $owner);
-        $this->setDescription("This command opens a profile ui"); 
+        $this->setDescription("This command opens a ProfileUI"); 
         $this->setUsage("/profile"); 
         $this->setPermission("use.profile ui.profile"); 
         $this->plugin = $owner; 
@@ -31,7 +31,7 @@ class ProfileCommand extends PluginCommand {
         if($sender instanceof Player) {
             self::$splayer = strtolower($sender->getName());
             $sender->sendForm(new ProfileForm());
-        } else $sender->sendMessage("§cYour can't use this command as a console");
+        } else $sender->sendMessage("§cYou can't use this command as a console");
         return false;
     }
 
